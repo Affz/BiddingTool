@@ -2,32 +2,20 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { useFormik } from 'formik';
 import React from 'react';
-import * as yup from "yup"
-
 
 export const StepFour = (props: any) => {
     const [letsChange, setValues] = React.useState(false);
-    console.log(props);
-    const validationSchema = yup.object({
-        phoneNo: yup
-            .string()
-            .max(10, 'Enter 10 digits phone number')
-    });
     const formik = useFormik({
         initialValues: {
-            phoneNo: "",
-            name: "",
-            remarks: "",
-            otpZero:"",
-            otpOne:"",
-            otpTwo:"",
-            otpThree:""
-               
+            otpZero: "",
+            otpOne: "",
+            otpTwo: "",
+            otpThree: ""
+
         },
-        validationSchema: validationSchema,
         onSubmit: (currValues) => {
             console.log(currValues);
-            if(formik.values.otpZero === "1" && formik.values.otpOne === "2" && formik.values.otpTwo === "3" && formik.values.otpThree === "4"){
+            if (formik.values.otpZero === "1" && formik.values.otpOne === "2" && formik.values.otpTwo === "3" && formik.values.otpThree === "4") {
                 setValues(true);
             }
         }
@@ -36,41 +24,41 @@ export const StepFour = (props: any) => {
 
         <div className="row">
             <div className="col-md-12" style={{ marginTop: "20px" }}>
-            <div className="row" >
-                        <div className="col-md-6" style={{ fontSize: "12px" }}>
-                            BID DETAILS
+                <div className="row" >
+                    <div className="col-md-6" style={{ fontSize: "12px" }}>
+                        BID DETAILS
                      </div>
-                        <div className="col-md-6">
-                            EDIT
+                    <div className="col-md-6">
+                        EDIT
                       </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {"+91-" + props.props.phoneNo}
                     </div>
-                    <div className="row">
-                        <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
-                            {"+91-"+ props.props.phoneNo}
-                        </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {props.props.name}
                     </div>
-                    <div className="row">
-                        <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
-                            {props.props.name}
-                        </div>
-                        <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
-                            {props.price}
-                        </div>
+                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {props.price}
                     </div>
-                    <div className="row">
-                        <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
-                            {props.props.remarks}
-                        </div>
-                        <div className="col-md-6" style={{ fontSize: "12px" ,color:"grey"}}>
-                            Fixed Price
+                </div>
+                <div className="row">
+                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {props.props.remarks}
                     </div>
+                    <div className="col-md-6" style={{ fontSize: "12px", color: "grey" }}>
+                        Fixed Price
                     </div>
+                </div>
 
-                    <div className="row" style={{ marginTop: "20px" }}>
-                        <div className="col-md-12">
-                            We've sent an OTP to your number. Please enter it to submit your Bid {props.phoneNo}
-                        </div>
+                <div className="row" style={{ marginTop: "20px" }}>
+                    <div className="col-md-12">
+                        We've sent an OTP to your number. Please enter it to submit your Bid {props.phoneNo}
                     </div>
+                </div>
                 <form onSubmit={formik.handleSubmit}>
                     <div className="row">
                         <div className="col-md-12">
@@ -122,22 +110,20 @@ export const StepFour = (props: any) => {
                         </div>
                     </div>
                     {formik.values.otpZero === "1" && formik.values.otpOne === "2" && formik.values.otpTwo === "3" && formik.values.otpThree === "4" ?
-                     <Button color="primary" variant="contained" fullWidth type="submit" style={{ marginTop: "20px" }}>
-                         Submit Bid
-                      </Button> 
-                     :
-                    <div className="row" style={{ marginTop: "20px" }}>
-                        <div className="col-md-12" >
-                            <Button color="primary" variant="contained" fullWidth type="submit">
-                                Check OTP
-                            </Button>     
-                              
+                        <Button color="primary" variant="contained" fullWidth type="submit" style={{ marginTop: "20px" }}>
+                            Submit Bid
+                      </Button>
+                        :
+                        <div className="row" style={{ marginTop: "20px" }}>
+                            <div className="col-md-12" >
+                                <Button color="primary" variant="contained" fullWidth type="submit">
+                                    Check OTP
+                            </Button>
+                            </div>
                         </div>
-                    </div>
                     }
                 </form>
             </div>
         </div>
-
     )
 };

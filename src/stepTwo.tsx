@@ -4,7 +4,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { useFormik } from 'formik';
 import React from 'react';
 import * as yup from "yup"
-import { Header } from './header';
 import { StepThree } from './stepThree';
 
 
@@ -17,13 +16,13 @@ export const StepTwo = (props: any) => {
     });
     const formik = useFormik({
         initialValues: {
-            price: "0",
+            price: "Rs. 0",
         },
         validationSchema: validationSchema,
         onSubmit: (currValues) => {
             console.log(currValues);
             setValues(true);
-            props.headerValChange({number:3,name:"Verify OTP"});
+            props.headerValChange({ number: 3, name: "Verify OTP" });
         }
     });
     return (
@@ -50,8 +49,8 @@ export const StepTwo = (props: any) => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12" style={{ fontSize: "12px", fontWeight: "bold" ,marginTop: "20px" }}>
-                        <TextField
+                        <div className="col-md-12" style={{ fontSize: "12px", fontWeight: "bold", marginTop: "20px" }}>
+                            <TextField
                                 id="standard-multiline-static"
                                 rows={4}
                                 name="price"
@@ -60,31 +59,31 @@ export const StepTwo = (props: any) => {
                                 value={formik.values.price}
                             />
                         </div>
-                           
+
                     </div>
                     <div className="row">
                         <div className="col-md-12" id="rate">
-                        <Checkbox value="checkedA" inputProps={{ 'aria-label': 'Checkbox A' }} /> Rate Negotiable
+                            <Checkbox value="checkedA" inputProps={{ 'aria-label': 'Checkbox A' }} /> Rate Negotiable
                         </div>
                     </div>
-            
-                <div className="row">
-                    {!letsChange &&
-                        <div className="col-md-12">
-                            <Button disabled={formik.values.price.length > 4 ? false : true} color="primary" variant="contained" fullWidth type="submit"> Next  </Button>
-                        </div>
-                    }
-                </div>
-                    </form>
-        </div>
-             {
-        letsChange &&
-        <div className="offset-4 col-md-4" style={{ marginTop: "20px" }}>
-            <div className="col-md-12">
-                <StepThree props={props.headerValChange} price ={formik.values.price} />
+
+                    <div className="row">
+                        {!letsChange &&
+                            <div className="col-md-12">
+                                <Button disabled={formik.values.price.length > 4 ? false : true} color="primary" variant="contained" fullWidth type="submit"> Next  </Button>
+                            </div>
+                        }
+                    </div>
+                </form>
             </div>
-        </div>
-    }
-  </div >
+            {
+                letsChange &&
+                <div className="offset-4 col-md-4" style={{ marginTop: "20px" }}>
+                    <div className="col-md-12">
+                        <StepThree props={props.headerValChange} price={formik.values.price} />
+                    </div>
+                </div>
+            }
+        </div >
     )
 }
