@@ -7,7 +7,7 @@ import * as yup  from "yup"
 import { StepFour } from './stepFour';
 
 
-export const StepThree= () => {
+export const StepThree= (props:any) => {
     const [letsChange, setValues] = React.useState(false);
     const validationSchema = yup.object({
         phoneNo: yup
@@ -24,6 +24,7 @@ export const StepThree= () => {
         onSubmit: (currValues) => {
            console.log(currValues);
            setValues(true);
+           props.props({number:4,name:"Summary and Submit Bid"});
         }
     });
     return (
@@ -49,7 +50,7 @@ export const StepThree= () => {
                     <TextField
                     fullWidth
                     id="outlined-basic"
-                    label="Enter your names" 
+                    label="Enter your name" 
                     variant="outlined" 
                     name="name"
                     type="text"
@@ -82,7 +83,7 @@ export const StepThree= () => {
             :
             <div className="row">
                 <div className="col-md-12">
-                    <StepFour props={formik.values}/>
+                    <StepFour props={formik.values} price={props.price}/>
                 </div>
             </div>
             }

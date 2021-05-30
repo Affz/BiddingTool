@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+#header-row{
+  height: 100px;
+  background-color: #101356e8;
+  color: white;
+}
+#rate {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+#header-col{
+  padding-top: 37px;
+}
