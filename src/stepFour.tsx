@@ -14,7 +14,6 @@ export const StepFour = (props: any) => {
 
         },
         onSubmit: (currValues) => {
-            console.log(currValues);
             if (formik.values.otpZero === "1" && formik.values.otpOne === "2" && formik.values.otpTwo === "3" && formik.values.otpThree === "4") {
                 setValues(true);
             }
@@ -23,30 +22,30 @@ export const StepFour = (props: any) => {
     return (
 
         <div className="row">
-            <div className="col-md-12" style={{ marginTop: "20px" }}>
+            <div className="col-md-12" id="margin-gen">
                 <div className="row" >
                     <div className="col-md-6" style={{ fontSize: "12px" }}>
                         BID DETAILS
                      </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6" style={{ fontSize: "12px" }}>
                         EDIT
                       </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                    <div className="col-md-6" id="font-details">
                         {"+91-" + props.props.phoneNo}
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                    <div className="col-md-6" id="font-details">
                         {props.props.name}
                     </div>
-                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                    <div className="col-md-6" id="font-details">
                         {props.price}
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                    <div className="col-md-6" id="font-details">
                         {props.props.remarks}
                     </div>
                     <div className="col-md-6" style={{ fontSize: "12px", color: "grey" }}>
@@ -54,7 +53,7 @@ export const StepFour = (props: any) => {
                     </div>
                 </div>
 
-                <div className="row" style={{ marginTop: "20px" }}>
+                <div className="row" id="margin-gen">
                     <div className="col-md-12">
                         We've sent an OTP to your number. Please enter it to submit your Bid {props.phoneNo}
                     </div>
@@ -110,17 +109,17 @@ export const StepFour = (props: any) => {
                         </div>
                     </div>
                     {formik.values.otpZero === "1" && formik.values.otpOne === "2" && formik.values.otpTwo === "3" && formik.values.otpThree === "4" ?
-                        <Button color="primary" variant="contained" fullWidth type="submit" style={{ marginTop: "20px" }}>
+                      <Button color="primary" variant="contained" fullWidth type="submit" id="margin-gen">
                             Submit Bid
                       </Button>
                         :
-                        <div className="row" style={{ marginTop: "20px" }}>
+                     <div className="row" id="margin-gen">
                             <div className="col-md-12" >
                                 <Button color="primary" variant="contained" fullWidth type="submit">
                                     Check OTP
                             </Button>
                             </div>
-                        </div>
+                      </div>
                     }
                 </form>
             </div>

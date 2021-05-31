@@ -41,9 +41,23 @@
   background-color: #101356e8;
   color: white;
 }
+#font-details{
+  font-size: "18px";
+  font-weight: "bold" 
+}
+#margin-gen{
+  margin-top:20px;
+}
 #rate {
   padding-bottom: 30px;
   padding-top: 30px;
+  
+}
+#price{
+  text-align: center;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-top: "20px" 
 }
 #header-col{
   padding-top: 37px;

@@ -1,5 +1,4 @@
 export const Header = (props: any) => {
-    console.log(props);
     return (
         <div className="row" id="header-row">
             <div className="col-md-12" id="header-col">

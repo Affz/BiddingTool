@@ -17,14 +17,14 @@ const validationSchema = yup.object().shape({
     carType: yup
         .string(),
     noOfPassengers: yup
-        .string()
+        .number()
         .when('carType', {
-            is: value => value && value === "SUV",
+            is: value => value === "SUV",
             then: yup
-                .string()
+              .number()
                 .max(6, 'Max 6 passengers are required'),
             otherwise: yup
-                .string()
+              .number()   
                 .max(4, 'Max 4 passengers are required'),
         }),
 });
@@ -37,12 +37,11 @@ export const StepOne = () => {
         initialValues: {
             location: '',
             destination: '',
-            noOfPassengers: "4",
-            carType: "",
+            noOfPassengers: 0,
+            carType: "Select",
         },
         validationSchema: validationSchema,
         onSubmit: (currValues) => {
-            console.log(currValues);
             setValues(true);
             setHeaderVal({ number: 2, name: "Place your Bid" });
         }
@@ -56,7 +55,7 @@ export const StepOne = () => {
                 </div>
                 <div className="offset-4 col-md-4">
                     <form onSubmit={formik.handleSubmit}>
-                        <div className="row" style={{ marginTop: "20px" }}>
+                        <div className="row" id="margin-gen">
                             <div className="col-md-6">
                                 <TextField
                                     fullWidth
@@ -84,7 +83,7 @@ export const StepOne = () => {
                                 />
                             </div>
                         </div>
-                        <div className="row" style={{ marginTop: "20px" }}>
+                        <div className="row" id="margin-gen">
                             <div className="col-md-12">
                                 <FormControl variant="outlined" style={{ width: "460px" }}>
                                     <InputLabel id="demo-simple-select-outlined-label" style={{ top: "-7px" }}>Car Type</InputLabel>
@@ -102,7 +101,7 @@ export const StepOne = () => {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="row" style={{ marginTop: "20px" }}>
+                        <div className="row" id="margin-gen">
                             <div className="col-md-12">
                                 <TextField
                                     fullWidth
@@ -118,7 +117,7 @@ export const StepOne = () => {
                                 />
                             </div>
                         </div>
-                        <Button color="primary" variant="contained" fullWidth type="submit" style={{ marginTop: "20px" }}>
+                        <Button color="primary" variant="contained" fullWidth type="submit" id="margin-gen">
                             Enter Bid Details
                       </Button>
                     </form>

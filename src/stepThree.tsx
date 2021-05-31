@@ -22,19 +22,18 @@ export const StepThree = (props: any) => {
         },
         validationSchema: validationSchema,
         onSubmit: (currValues) => {
-            console.log(currValues);
             setValues(true);
             props.props({ number: 4, name: "Summary and Submit Bid" });
         }
     });
     return (
         <div className="row">
-            <div className="col-md-12" style={{ marginTop: "20px" }}>
+            <div className="col-md-12">
                 <form onSubmit={formik.handleSubmit}>
 
                     {!letsChange ?
                         <div className="row">
-                            <div className="col-md-12" style={{ marginTop: "20px" }}>
+                            <div className="col-md-12" >
                                 <TextField
                                     fullWidth
                                     id="outlined-basic"
@@ -46,7 +45,7 @@ export const StepThree = (props: any) => {
                                     helperText={formik.touched.phoneNo && formik.errors.phoneNo}
                                 />
                             </div>
-                            <div className="col-md-12" style={{ marginTop: "20px" }}>
+                            <div className="col-md-12" id="margin-gen">
                                 <TextField
                                     fullWidth
                                     id="outlined-basic"
@@ -60,7 +59,7 @@ export const StepThree = (props: any) => {
                                     helperText={formik.touched.name && formik.errors.name}
                                 />
                             </div>
-                            <div className="col-md-12" style={{ marginTop: "20px" }}>
+                            <div className="col-md-12" id="margin-gen">
                                 <TextField
                                     fullWidth
                                     id="outlined-basic"
@@ -74,10 +73,10 @@ export const StepThree = (props: any) => {
                                     helperText={formik.touched.remarks && formik.errors.remarks}
                                 />
                             </div>
-                            <div className="col-md-12" style={{ marginTop: "20px" }}>
+                            <div className="col-md-12" id="margin-gen">
                                 <Button color="primary" variant="contained" fullWidth type="submit">
                                     Verify via OTP
-                    </Button>
+                               </Button>
                             </div>
                         </div>
                         :

@@ -12,15 +12,14 @@ export const StepTwo = (props: any) => {
     const validationSchema = yup.object({
         phoneNo: yup
             .string()
-            .max(10, 'Enter 10 digits phone number')
+            .max(10, 'Enter 10 digits phone number'),
     });
     const formik = useFormik({
         initialValues: {
-            price: "Rs. 0",
+            price:0,
         },
         validationSchema: validationSchema,
         onSubmit: (currValues) => {
-            console.log(currValues);
             setValues(true);
             props.headerValChange({ number: 3, name: "Verify OTP" });
         }
@@ -28,18 +27,18 @@ export const StepTwo = (props: any) => {
     return (
 
         <div className="row">
-            <div className="offset-4 col-md-4" style={{ marginTop: "20px" }}>
+            <div className="offset-4 col-md-4" id="margin-gen">
                 <form onSubmit={formik.handleSubmit}>
-                    <div className="row" style={{ marginTop: "20px" }}>
+                    <div className="row" id="margin-gen">
                         <div className="col-md-6" style={{ fontSize: "12px" }}>
                             JOUNERY DETAILS
                              </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{ fontSize: "12px" }}>
                             EDIT
                     </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-6" style={{ fontSize: "12px", fontWeight: "bold" }}>
+                        <div className="col-md-6" id="font-details">
                             {props.props.location} - {props.props.destination}
                         </div>
                     </div>
@@ -49,17 +48,15 @@ export const StepTwo = (props: any) => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-12" style={{ fontSize: "12px", fontWeight: "bold", marginTop: "20px" }}>
+                        <div className="col-md-12" id="margin-gen">
                             <TextField
-                                id="standard-multiline-static"
-                                rows={4}
+                                id="standard-basic"
                                 name="price"
                                 onChange={formik.handleChange}
-                                variant="standard"
                                 value={formik.values.price}
+                                label="Price"
                             />
                         </div>
-
                     </div>
                     <div className="row">
                         <div className="col-md-12" id="rate">
@@ -70,7 +67,7 @@ export const StepTwo = (props: any) => {
                     <div className="row">
                         {!letsChange &&
                             <div className="col-md-12">
-                                <Button disabled={formik.values.price.length > 4 ? false : true} color="primary" variant="contained" fullWidth type="submit"> Next  </Button>
+                                <Button disabled={formik.values.price.toString().length > 3 ? false : true} color="primary" variant="contained" fullWidth type="submit"> Next  </Button>
                             </div>
                         }
                     </div>
@@ -78,7 +75,7 @@ export const StepTwo = (props: any) => {
             </div>
             {
                 letsChange &&
-                <div className="offset-4 col-md-4" style={{ marginTop: "20px" }}>
+                <div className="offset-4 col-md-4" id="margin-gen">
                     <div className="col-md-12">
                         <StepThree props={props.headerValChange} price={formik.values.price} />
                     </div>
