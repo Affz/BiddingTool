@@ -16,15 +16,17 @@ const validationSchema = yup.object().shape({
         .required('Destination is required'),
     carType: yup
         .string(),
-    noOfPassengers: yup.string().when(['carType'], {
-        is: (val: any) => val && val === "SUV",
-        then: yup
-            .string()
-            .max(6, 'Max 6 passengers are required'),
-        otherwise: yup
-            .string()
-            .max(4, 'Max 4 passengers are required'),
-    }),
+    noOfPassengers: yup
+        .string()
+        .when('carType', {
+            is: value => value && value === "SUV",
+            then: yup
+                .string()
+                .max(6, 'Max 6 passengers are required'),
+            otherwise: yup
+                .string()
+                .max(4, 'Max 4 passengers are required'),
+        }),
 });
 
 export const StepOne = () => {
